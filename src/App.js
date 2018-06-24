@@ -20,21 +20,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeComponent: 'product-list',
       isOpen: false
     };
-    this.changeNavigation = this.changeNavigation.bind(this);
-  }
-
-  changeNavigation(prop) {
-    this.setState({ activeComponent: prop });
   }
 
   toggleModal = () => {
     this.setState({
       isOpen: !this.state.isOpen
     });
-
   }
 
   render() {

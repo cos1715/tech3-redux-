@@ -17,11 +17,7 @@ class Modal extends React.Component {
     addProduct = (event) => {
         let obj = this.state;
         this.props.products.push(obj);
-        this.setState({
-            name: '',
-            price: 0,
-            available: 0
-        });
+        this.props.onClose();
     }
 
 
