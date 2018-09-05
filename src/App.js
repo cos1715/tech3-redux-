@@ -1,57 +1,36 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
 
 // Components
 import SideBar from './components/sidebar';
 import Cart from './containers/cart';
 import ProductList from './containers/product-list';
-import Modal from './Modal';
 
 // CSS
 import './App.css';
 
-const id = {
-  id1: 'product-link',
-  id2: 'id'
-}
-
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isOpen: false
-    };
+
+    this.state = {activeComponent: 'product-list'};
+    this.changeNavigation = this.changeNavigation.bind(this);
   }
 
-  toggleModal = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
+  changeNavigation(prop) {
+    this.setState({activeComponent: prop});
   }
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title"><Link to="/products">My simple shop</Link></h1>
-          <div className="cart-title">
-            <button onClick={this.toggleModal} >New product</button>
-            <Modal show={this.state.isOpen}
-              onClose={this.toggleModal}>
-            </Modal>
-            <h2><Link to="/cart">Cart: {this.props.inCart.length}</Link></h2>
-          </div>
+          <h1 className="App-title">My simple shop</h1>
         </header>
         <div className="App-wrapper">
-          <SideBar id={id} />
-          <ProductList />
+          <SideBar changeNavigation={this.changeNavigation}/>
+          {this.state.activeComponent === 'product-list' ? <ProductList/> : <Cart/>}
         </div>
       </div>
     );
   }
 }
-
-const mapStateToProps = state => ({ ...state });
-
-export default connect(mapStateToProps)(App);
