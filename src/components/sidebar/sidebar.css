@@ -1,4 +1,4 @@
-.App-sidebar {
+.Sidebar-div {
     display: flex;
     min-width: 150px;
     height: 100%;
@@ -6,11 +6,16 @@
     padding: 0 10px;
 }
 
-.App-sidebar-nav {
-    color: #fff;
+.NavLink-selected {
+    text-shadow: 2px 2px 5px rgb(255, 255, 0);
 }
 
-.App-sidebar-nav a {
+.Sidebar-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.Sidebar-nav a {
     display: block;
     padding: 10px 0;
     cursor: pointer;

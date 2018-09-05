@@ -1,5 +1,5 @@
-import {GET_CART_ITEMS} from '../actions/cart.actions';
-import {GET_PRODUCT_LIST} from '../actions/products.action';
+import {GET_CART_ITEMS} from '../actions/actionCart';
+import {GET_PRODUCT_LIST} from '../actions/actionProducts';
 
 const initState = {
   inCart: [],
