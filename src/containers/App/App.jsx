@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Route,
   Link,
@@ -17,10 +18,15 @@ import './App.css';
 
 class App extends Component {
   render() {
+    const { inCart } = this.props;
     return (
       <div className="App">
         <header className="App-header">
-          <h1><Link to="/products" className="App-title">Topics</Link></h1>
+          <h1 className="App-header-h1"><Link to="/products" className="App-title">Producs</Link></h1>
+          <div className="App-header-div">
+            <button type="button" className="App-header-button">New Product</button>
+            <h2 className="App-header-h2"><Link to="/cart" className="App-title">Cart: {inCart.length}</Link></h2>
+          </div>
         </header>
         <div className="App-wrapper">
           <SideBar />
@@ -37,4 +43,6 @@ class App extends Component {
 }
 
 
-export default App;
+const mapStateToProps = state => ({ ...state });
+
+export default connect(mapStateToProps)(App);
