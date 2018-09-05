@@ -1,0 +1,14 @@
+.ProductList-div {
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.ProductList-div-select {
+    margin-left: 20px;
+}

@@ -1,4 +1,6 @@
-export default [
+import { DECREASE_AVAILABILITY, ADD_NEW_ITEM } from '../actions/actionData';
+
+const initState = [
     {
         name: 'IPhone 4s',
         price: 200,
@@ -50,3 +52,24 @@ export default [
         available: 7
     }
 ];
+
+export default (state = initState, action) => {
+    let items;
+    switch (action.type) {
+        case DECREASE_AVAILABILITY:
+            items = state.slice(0);
+            const index = items.findIndex(element => {
+                return element.name === action.payload.name;
+            });
+            items[index] = Object.assign({}, action.payload, {
+                available: action.payload.available - 1,
+            });
+            return items;
+        case ADD_NEW_ITEM:
+            items = state.slice(0);
+            items.push(action.payload);
+            return items;
+        default:
+            return state;
+    }
+};
