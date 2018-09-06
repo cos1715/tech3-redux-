@@ -1,4 +1,5 @@
 import {
+  INCREASE_AVAILABILITY,
   DECREASE_AVAILABILITY,
   ADD_NEW_ITEM,
   FETCH_ERRORED,
@@ -62,6 +63,15 @@ export default (state = initState, action) => {
   let items;
   let index;
   switch (action.type) {
+    case INCREASE_AVAILABILITY:
+      items = state.slice(0);
+      index = items.findIndex(element => {
+        return element.name === action.payload.name;
+      });
+      items[index] = Object.assign({}, action.payload, {
+        available: action.payload.available + 1
+      });
+      return items;
     case DECREASE_AVAILABILITY:
       items = state.slice(0);
       index = items.findIndex(element => {
