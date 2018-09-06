@@ -4,5 +4,5 @@ export const orderItems = (orderBy) => {
     return {
         type: ORDER_ITEMS,
         payload: orderBy,
-    }
+    };
 };

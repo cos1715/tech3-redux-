@@ -4,15 +4,15 @@ import {connect} from 'react-redux';
 import './Cart.css';
 
 export class Cart extends Component {
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+    }
 
-  render() {
-    return (<div className="App-cart">
-      {this.props.inCart.length ? 'There is some items in you cart' : 'Your cart is empty :('}
-    </div>);
-  }
+    render() {
+        return (<div className="App-cart">
+            {this.props.inCart.length ? 'There is some items in you cart' : 'Your cart is empty :('}
+        </div>);
+    }
 }
 
 const mapStateToProps = state => ({...state});
