@@ -2,8 +2,6 @@ import {
   INCREASE_AVAILABILITY,
   DECREASE_AVAILABILITY,
   ADD_NEW_ITEM,
-  FETCH_ERRORED,
-  FETCH_DATA_SUCCESS
 } from "../actions/actionData";
 
 const initState = [
@@ -82,12 +80,6 @@ export default (state = initState, action) => {
       });
       return items;
     case ADD_NEW_ITEM:
-      items = state.slice(0);
-      items.push(action.payload);
-      return items;
-    case FETCH_ERRORED:
-      return state;
-    case FETCH_DATA_SUCCESS:
       items = state.slice(0);
       items.push(action.payload);
       return items;

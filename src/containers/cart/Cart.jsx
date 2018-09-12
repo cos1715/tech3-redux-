@@ -54,12 +54,16 @@ export class Cart extends Component {
   renderCart = () => {
     const { inCart } = this.props;
     const products = inCart.reduce(
-      (b, c) => (
+      (sortedArray, currentItem) => (
         (
-          b[b.findIndex(d => d.item.name === c.name)] ||
-          b[b.push({ item: c, inCart: 0 }) - 1]
+          sortedArray[
+            sortedArray.findIndex(
+              checkItem => checkItem.item.name === currentItem.name
+            )
+          ] ||
+          sortedArray[sortedArray.push({ item: currentItem, inCart: 0 }) - 1]
         ).inCart++,
-        b
+        sortedArray
       ),
       []
     );

@@ -5,22 +5,13 @@ import { connect } from "react-redux";
 
 import { addToCart } from "../../actions/actionCart";
 import { orderItems } from "../../actions/actionProducts";
-import {
-  decreaseAvailability,
-  itemsFetchDataSuccess,
-  itemsHasErrored
-} from "../../actions/actionData";
+import { decreaseAvailability } from "../../actions/actionData";
 
 import Products from "../../components/Products/Products";
 
 import "./ProductList.css";
 
 class ProductList extends Component {
-  componentDidMount() {
-    const { fetchData } = this.props;
-
-    fetchData("data.json");
-  }
   orderByHandle = event => {
     const { orderItems } = this.props;
 
@@ -78,21 +69,7 @@ const mapDispatchToProps = dispatch => {
     {
       addToCart: addToCart,
       orderItems: orderItems,
-      decreaseAvailability: decreaseAvailability,
-      fetchData: url => {
-        return dispatch => {
-          fetch(url)
-            .then(response => {
-              if (!response.ok) {
-                throw Error(response.statusText);
-              }
-              return response;
-            })
-            .then(response => response.json())
-            .then(items => dispatch(itemsFetchDataSuccess(items)))
-            .catch(() => dispatch(itemsHasErrored(true)));
-        };
-      }
+      decreaseAvailability: decreaseAvailability
     },
     dispatch
   );
