@@ -77,3 +77,7 @@ yarn-error.log*
 .idea/modules.xml
 .idea/redux-start.iml
 .idea/vcs.xml
+
+# Lock files
+yarn.lock
+package-lock.json
